@@ -1,44 +1,40 @@
-const n1Elem = document.getElementById("n1")
-const n2Elem = document.getElementById("n2")
-const calcolaBtn = document.getElementById("calcolaBtn")
+const n1Elem = document.getElementById("n1");
+const n2Elem = document.getElementById("n2");
+const calcolBtn = document.getElementById("calcolaBtn")
 
-const op = document.getElementById("operation")
+const op = document.getElementById("operation");
 const resElem = document.getElementById("result")
 
-function sum(a,b) {return a+b;}
-function dif(a,b){return a-b;}
-function mol(a,b){return a*b;}
-function div(a,b){return a/b;}
+function sum(a, b) {
+return a + b;
+}
 
-// def chooseOp(operand) -> func relativa
+function diff(a, b) {
+return a - b;
+}
+
+//Def chooseOp(operand) => restituisce funz relativa 
 function chooseOp(operand) {
-    switch (operand) {
-        case '+':
-            return sum
-        case '-':
-            return dif
-        case '*':
-            return mol
-        case '/':
-            return div
-    }
+switch (operand) {
+case '+':
+return sum
+case '-':
+return diff
+}
 }
 
-function compute(f,a,b) {
-    return f(a,b)
+function compute(f, a, b) {
+return f(a, b)
 }
 
+//Come controllo il btn?
+//Come controllo il btn? AEL
+calcolBtn.addEventListener ("click", function () {
+//prendere primo numero
+const a = Number(n1Elem.value)
+const b = Number(n2Elem.value)
 
-//come controllo btn? -> addEventListener
-calcolaBtn.addEventListener("click", function() {
-    //prendere numeri
-    const a = Number(n1Elem.value)
-    const b = Number(n2Elem.value)
+const chosenOp = chooseOp(op.value)
+const res = compute(chosenOp, a, b)
 
-    //prendere operatore
-    const chosenOp = chooseOp(op.value)
-    const res = compute(chosenOp, a, b)
-
-    resElem.textContent = res
-
-})
+resElem.textContent = res})
